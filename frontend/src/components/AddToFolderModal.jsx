@@ -16,7 +16,7 @@ export default function AddToFolderModal({ summaryId, folders, onClose, onAdded 
 
   const handleSave = async () => {
     if (!selectedFolder) return;
-    await axios.patch(`http://localhost:5000/api/summary/${summaryId}`, 
+    await axios.patch(`/api/summary/${summaryId}`, 
       { folderId: selectedFolder._id },
       { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
     );
