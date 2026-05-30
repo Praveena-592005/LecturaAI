@@ -18,8 +18,8 @@ export default function History() {
     try {
       const headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
       const [histRes, foldRes] = await Promise.all([
-        fetch('/api/summary/history', { headers }),
-        fetch('/api/folderRoutes', { headers })
+        fetch('https://lecturaai.onrender.com/api/summary/history', { headers }),
+        fetch('https://lecturaai.onrender.com/api/folderRoutes', { headers })
       ]);
       
       if (histRes.ok) setHistory(await histRes.json());
@@ -43,7 +43,7 @@ export default function History() {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to permanently clear this archival log record?')) return;
     try {
-      const res = await fetch(`/api/summary/${id}`, {
+      const res = await fetch(`https://lecturaai.onrender.com/api/summary/${id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
       });
