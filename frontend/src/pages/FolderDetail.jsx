@@ -19,10 +19,10 @@ export default function FolderDetail() {
       const token = localStorage.getItem('token');
       // Fetch both folder info and summaries
       const [folderRes, sumRes] = await Promise.all([
-        axios.get(`https://lecturaai.onrender.com/api/folderRoutes/${id}`, {
+        axios.get(`http://localhost:5000/api/folderRoutes/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         }),
-        axios.get(`https://lecturaai.onrender.com/api/summary?folderId=${id}`, {
+        axios.get(`http://localhost:5000/api/summary?folderId=${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         })
       ]);
@@ -45,7 +45,7 @@ export default function FolderDetail() {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.patch(`https://lecturaai.onrender.com/api/summary/${noteId}`, 
+      await axios.patch(`http://localhost:5000/api/summary/${noteId}`, 
         { folderId: null }, 
         { headers: { Authorization: `Bearer ${token}` } }
       );
